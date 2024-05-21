@@ -1,0 +1,29 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<div class="container" style="margin-top: 50px;">
+    <h2 class="text-center">LOGIN ADMIN</h2>
+    <br>
+    <div class="row ">
+        <form class="form" method="post" action="">
+            {% csrf_token %}
+          <label>ADMIN NAME</label>
+          <input type="text" name="name" class="form-control" required>  
+          <label>PASSWORD</label>
+          <input type="password" name="password1" class="form-control" required>
+          <br>
+          <input type="submit" value="login" class="btn btn-primary form-control"> 
+        </form>
+    </div>
+</div>
+{% if error == "no" %}
+<script>
+    alert("You have succesfully logged in ");
+  
+    window.location.href = ("{% url 'admin_page' %}");
+    
+</script>
+{% endif %}
+
+
+{% endblock %}

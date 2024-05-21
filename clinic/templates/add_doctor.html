@@ -1,0 +1,42 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<div class="container" style="margin-top: 50px;">
+    <h2 class="text-center">LOGIN ADMIN</h2>
+    <br>
+    <div class="row ">
+        <form class="form" method="post" action=".">
+            {% csrf_token %}
+          <label>DOCTORS NAME</label>
+          <input type="text" name="name" class="form-control" required>  
+          <label>MOBILE</label>
+          <input type="number" name="mobile" class="form-control" required>
+          <label>SPECIALIZATION</label>
+          <input type="text" name="specialization" class="form-control" required>
+          <br>
+          <input type="submit" value="submit" class="form-control btn btn-primary"> 
+        </form>
+    </div>
+</div>
+
+{% if error == "no" %}
+<script>
+    alert("You have succesfully created a doctor ");
+  
+    window.location.href = ("{% url 'view_doctors' %}");
+    
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert("something went wrong");
+  
+    window.location.href = ("{% url 'admin_page' %}");
+    
+</script>
+{% endif %}
+
+
+
+{% endblock %}
