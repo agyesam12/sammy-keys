@@ -100,7 +100,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = 'clinic.UserManager'
+AUTH_USER_MODEL = 'clinic.UserMaster'
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
