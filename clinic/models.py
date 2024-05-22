@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser
 
 
 #Create your models here.
-class User(AbstractUser):
+class UserMaster(AbstractUser):
     name = models.CharField(max_length=100)
     mobile = models.CharField(max_length=100)
     gender = models.CharField(max_length=40, null=True, blank=False)
@@ -17,8 +17,8 @@ class User(AbstractUser):
 
 
 class Appointment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE,related_name='doctor')
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(UserMaster, on_delete=models.CASCADE,related_name='doctor')
+    user = models.ForeignKey(UserMaster, on_delete=models.CASCADE)
     date1 = models.DateField()
     time1 = models.TimeField()
 
