@@ -45,27 +45,3 @@ def signout(request):
     logout(request)
     return redirect('/')
 
-def add_doctor(request):
-    error = ""
-    if not request.user.is_staff:
-        return redirect('/')
-    if request.method == "POST":
-        n = request.POST['name']
-        m = request.POST['mobile']
-        s = request.POST['specialization']
-        try:
-            Doctor.objects.create(name=n,mobile=m,specialization=s)
-            error="no"
-            return redirect('/view_doctors/')
-        except:
-            error = "yes"
-    context = {'error': error}
-    return render(request, 'add_doctor.html', context)
-    
-
-def view_doctors(request):
-    if not request.user.is_staff:
-        return redirect('/')
-    doc = Doctor.objects.all()
-    context = {'doc': doc}
-    return render(request, 'view_doctors.html',context)

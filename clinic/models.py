@@ -1,10 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import User
 
 
 #Create your models here.
-class UserMaster(AbstractUser):
-    name = models.CharField(max_length=100)
+class User(AbstractUser):
+    name = models.CharField(max_length=200, null=True, blank=True)
     mobile = models.CharField(max_length=100)
     gender = models.CharField(max_length=40, null=True, blank=False)
     specialization = models.CharField(max_length=60,null=True,blank=False)
@@ -17,8 +18,8 @@ class UserMaster(AbstractUser):
 
 
 class Appointment(models.Model):
-    user = models.ForeignKey(UserMaster, on_delete=models.CASCADE,related_name='doctor')
-    user = models.ForeignKey(UserMaster, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,related_name='doctor')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     date1 = models.DateField()
     time1 = models.TimeField()
 
