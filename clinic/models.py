@@ -5,15 +5,11 @@ from django.contrib.auth.models import User
 
 #Create your models here.
 class User(AbstractUser):
-    name = models.CharField(max_length=200, null=True, blank=True)
-    mobile = models.CharField(max_length=100)
-    gender = models.CharField(max_length=40, null=True, blank=False)
-    specialization = models.CharField(max_length=60,null=True,blank=False)
     is_doctor = models.BooleanField(default=False)
     is_patient = models.BooleanField(default=False)
 
-    def __str__(self):
-        return self.name
+    class Meta:
+        swappable = 'AUTH_USER_MODEL'
     
 
 
@@ -24,4 +20,4 @@ class Appointment(models.Model):
     time1 = models.TimeField()
 
     def __str__(self):
-        return self.doctor.name + "--" +  self.user.name
+        return self.user.username
