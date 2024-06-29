@@ -26,7 +26,7 @@ class Doctor(models.Model):
 class Patient(models.Model):
     name = models.CharField(max_length=100, null=True, blank=False)
     address = models.CharField(max_length=300, null=True, blank=True)
-    gender = models.CharField(max_length=10)
+    gender = models.CharField(max_length=10, null=True, blank=True)
     contact = models.CharField(max_length=10, null=True, blank=False)
 
 
