@@ -62,6 +62,7 @@ def admin_page(request):
         return redirect('/')
     return render(request, 'admin_page.html')
 
+
 def signout(request):
     if not request.user.is_staff:
         redirect('/about/')
